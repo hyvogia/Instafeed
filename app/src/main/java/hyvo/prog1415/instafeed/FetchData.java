@@ -36,7 +36,8 @@ public class FetchData extends AsyncTask<Object, String, String> {
     @Override
     protected void onPostExecute(String s) {
         try{
-            JSONObject jsonObject = new JSONObject();
+            if (s == null || isCancelled() || googleMap == null) return;
+            JSONObject jsonObject = new JSONObject(s);
             JSONArray jsonArray = jsonObject.getJSONArray("results");
 
             for (int i = 0; i < jsonArray.length(); i++){

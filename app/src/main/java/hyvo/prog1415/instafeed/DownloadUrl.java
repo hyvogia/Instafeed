@@ -20,6 +20,8 @@ public class DownloadUrl {
         try{
             URL getUrl = new URL(url);
             httpURLConnection = (HttpURLConnection) getUrl.openConnection();
+            httpURLConnection.setConnectTimeout(15000);
+            httpURLConnection.setReadTimeout(15000);
             httpURLConnection.connect();
 
             inputStream = httpURLConnection.getInputStream();
@@ -39,8 +41,8 @@ public class DownloadUrl {
         } catch (Exception e){
             Log.d("Exception", e.toString());
         } finally {
-            inputStream.close();
-            httpURLConnection.disconnect();
+            if (inputStream != null) inputStream.close();
+            if (httpURLConnection != null) httpURLConnection.disconnect();
         }
         return urlData;
     }
