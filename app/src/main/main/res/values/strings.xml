@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Instafeed</string>
+    <string name="details">Write a Review</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>
